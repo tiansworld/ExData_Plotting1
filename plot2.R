@@ -1,5 +1,5 @@
 # Read data and subsetting
-active_power <- read.csv("rprog/household_power_consumption.txt",sep=";",comment.char="",stringsAsFactor=F,na.strings="?")
+active_power <- read.csv("household_power_consumption.txt",sep=";",comment.char="",stringsAsFactor=F,na.strings="?")
 
 sub_power <- subset(active_power, Date=="1/2/2007"|Date=="2/2/2007")
 
@@ -14,8 +14,8 @@ if ("dplyr" %in% installed.packages()) {
     power_df <- cbind(sub_power,Date_Time) #Add new column
 
 # plot
-plot(strptime(power_df$Date_Time,"%d/%m/%Y %H:%M:%S"),power_df$Global_active_power,pch=22,xlab="",ylab="Global Active Power (Kilowatts)")
-
+plot(strptime(power_df$Date_Time,"%d/%m/%Y %H:%M:%S"),power_df$Global_active_power,pch="",xlab="",ylab="Global Active Power (Kilowatts)")
+lines(strptime(power_df$Date_Time,"%d/%m/%Y %H:%M:%S"),power_df$Global_active_power)
 
 
 
