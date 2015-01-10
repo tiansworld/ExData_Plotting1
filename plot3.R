@@ -6,7 +6,7 @@ active_power <- read.csv("household_power_consumption.txt",sep=";",comment.char=
 sub_power <- subset(active_power, Date=="1/2/2007"|Date=="2/2/2007")
 
 # Change data time format
-if("dplyr" %in% installed.packages()) {
+if ("dplyr" %in% installed.packages()) {
     library(dplyr)
     power_df <- tbl_df(sub_power)
     time_string <- paste(power_df$Date,power_df$Time) #merge data and time into one variable
@@ -18,8 +18,12 @@ if("dplyr" %in% installed.packages()) {
     power_df <- cbind(sub_power,Date_Time) #Add new column
 }
 # plot
-plot(power_df$Date_Time, power_df$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
-
+with(power_df, {
+    plot(Date_Time,Sub_metering_1,type="l",xlab="",ylab="Energy sub metering")
+    lines(Date_Time,Sub_metering_2,col="red")
+    lines(Date_Time,Sub_metering_3,col="blue")
+    legend("topright",lty=1,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+})
 # Save the plot to png file
-dev.copy(png,"rprog/ExData_Plotting1/plot2.png",width=480,height=480,units="px")
+dev.copy(png, "rprog/ExData_Plotting1/plot3.png", width=480, height=480, units="px")
 dev.off()
