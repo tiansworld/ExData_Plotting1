@@ -1,5 +1,9 @@
 # Read data and subsetting
-# If you want to run this code correctly on your computer, you should change data location to your own location. In this code, household_power_consumption.txt is supposed to stored in default R working directory. And the png plot directory is at "rprog/ExData_Plotting1/".
+# If you want to run this code correctly on your computer, 
+# you should change data location to your own location. 
+# In this code, household_power_consumption.txt is supposed 
+# to stored in default R working directory. And the png plot
+# directory is at "rprog/ExData_Plotting1/".
 
 active_power <- read.csv("household_power_consumption.txt",sep=";",comment.char="",stringsAsFactor=F,na.strings="?")
 
